@@ -1,0 +1,69 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="panel">
+    <div class="col-md-12">
+      <div class="topnav">
+          <div class="row">
+              <div class="col-md-3">
+                  <div class="form-group has-search">
+                      <span class="fa fa-search form-control-feedback"></span>
+                      <input type="search" #input class="form-control" id="mySearch" placeholder="Search"  [(ngModel)]="searchText" >
+                  </div>
+              </div>
+              <div class="dropdown user-btn">
+              <span><b> Frank Mir </b></span>
+                <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+                 <img src="http://www.fillmurray.com/50/50">
+                   <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Menu item 1</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Menu item 2</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Menu item 3</a></li>
+                  <li role="presentation" class="divider"></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Menu item 4</a></li>
+                </ul>
+              </div>
+          </div>
+       </div>
+
+
+      <div class="row">
+          <div class="col-md-3">
+              <div class="sidenav" id="myMenu"  >
+                  <h6 (click)="showDetails($event)"  *ngFor="let n of contacts.People | filter:searchText:upperCase">{{n.name}}<i class="fa fa-play" ></i></h6>
+
+              </div>
+           </div>
+           <div class="col-md-8 padding-image">
+              <div class="row">
+                  <div class="col-md-3">
+                    <img [src]="source" alt="userphoto" *ngIf="isclicked" >
+                  </div>
+                 <div class="col-md-3" *ngIf="isclicked">
+                    <button class="btn btn-default">Send Message</button>
+                    <div >
+                     <span class="stars-container stars-{{starRating}}">♥♥♥♥♥</span>
+                    </div>
+                    
+                 </div>
+              </div>
+                <p>{{details}}</p>
+                 <ag-grid-angular 
+                  style="width: fit-content; height: fit-content;" 
+                  class="ag-theme-balham"
+                  [rowData]="rowData" 
+                  [columnDefs]="columnDefs"
+                   *ngIf="isclicked"
+                  >
+          </ag-grid-angular>
+            
+           </div>
+         
+           
+
+       </div>
+    </div>
+</div>
+
+
+<router-outlet></router-outlet>
